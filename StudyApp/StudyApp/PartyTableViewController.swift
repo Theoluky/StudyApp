@@ -7,21 +7,18 @@
 //
 
 import UIKit
+import os.log
 
-class PartyTableViewController: UITableViewController {
+class PartyTableViewController: UITableViewController, UITextFieldDelegate {
 
-    //Properties
+    //MARK: Properties
     
     var parties = [Party]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+ 
+        loadSampleParties()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,26 +27,50 @@ class PartyTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    //MARK: Actions
+    
+    @IBAction func unwindToPartyList(sender: UIStoryboardSegue){
+        
+        if let sourceViewController = sender.source as? PartyViewController, let party = sourceViewController.party {
+    
+            //Add new party
+            
+            let newIndexPath = IndexPath(row: parties.count, section: 0)
+            parties.append(party)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+  
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return parties.count
     }
 
-    /*
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        let cellIdentifier = "PartyTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PartyTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
 
-        // Configure the cell...
+        }
+        
+        let party = parties[indexPath.row]
+        
+        cell.HostLabel.text = party.host
+        cell.AddressLabel.text = party.address
+        
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -86,14 +107,58 @@ class PartyTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? ""){
+            
+        case "AddItem":
+            os_log("Adding a new party.", log: OSLog.default, type: .debug)
+            
+        case "ShowDetail":
+            guard let partyDetailViewController = segue.destination as? PartyViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedPartyCell = sender as? PartyTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedPartyCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedParty = parties[indexPath.row]
+            partyDetailViewController.party = selectedParty
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+        }
     }
-    */
+    
+    
+    //MARK: Private Methods
+    
+    private func loadSampleParties() {
+        guard let party1 = Party(address: "504 Concord Ave", host: "Christina", time: "midnight", addinfo: "yolo") else {
+            fatalError("Unable to instantiate meal1")
+        }
+        
+        guard let party2 = Party(address: "125 Rockwood Street", host: "Lucy", time: "8 pm", addinfo: "fun") else {
+            fatalError("Unable to instantiate meal1")
+        }
+        
+        guard let party3 = Party(address: "101 Canal Street", host: "Worthy", time: "10 pm", addinfo: "partayyy") else {
+            fatalError("Unable to instantiate meal1")
+        }
+        
+        parties += [party1, party2, party3]
+        
+    }
 
 }

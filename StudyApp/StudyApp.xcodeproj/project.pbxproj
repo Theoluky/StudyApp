@@ -18,6 +18,7 @@
 		CF3467F0204598AC00CF99C9 /* discolight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CF3467EF204598AC00CF99C9 /* discolight.jpg */; };
 		CF3933DD20487685006D6CD1 /* PartyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3933DC20487685006D6CD1 /* PartyTableViewController.swift */; };
 		CF3933DF204877F3006D6CD1 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3933DE204877F3006D6CD1 /* Party.swift */; };
+		CFBC944C204F64A000A5DD1A /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC944B204F64A000A5DD1A /* PartyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		CF3467EF204598AC00CF99C9 /* discolight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = discolight.jpg; path = ../../discolight.jpg; sourceTree = "<group>"; };
 		CF3933DC20487685006D6CD1 /* PartyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyTableViewController.swift; sourceTree = "<group>"; };
 		CF3933DE204877F3006D6CD1 /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
+		CFBC944B204F64A000A5DD1A /* PartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				CF16DDBF20409D340031B573 /* ViewController.swift */,
 				CF3933DE204877F3006D6CD1 /* Party.swift */,
 				CF16DDC120409D340031B573 /* Main.storyboard */,
+				CFBC944B204F64A000A5DD1A /* PartyViewController.swift */,
 				CF3933DC20487685006D6CD1 /* PartyTableViewController.swift */,
 				CF2597462046F988004EE531 /* PartyTableViewCell.swift */,
 				CF3467EF204598AC00CF99C9 /* discolight.jpg */,
@@ -217,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF3933DD20487685006D6CD1 /* PartyTableViewController.swift in Sources */,
+				CFBC944C204F64A000A5DD1A /* PartyViewController.swift in Sources */,
 				CF3933DF204877F3006D6CD1 /* Party.swift in Sources */,
 				CF16DDC020409D340031B573 /* ViewController.swift in Sources */,
 				CF2597472046F988004EE531 /* PartyTableViewCell.swift in Sources */,
