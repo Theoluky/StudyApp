@@ -145,15 +145,15 @@ class PartyTableViewController: UITableViewController, UITextFieldDelegate {
     //MARK: Private Methods
     
     private func loadSampleParties() {
-        guard let party1 = Party(address: "504 Concord Ave", host: "Christina", time: "midnight", addinfo: "yolo") else {
+        guard let party1 = Party(address: "504 Concord Ave", host: "Christina", time: "midnight", addinfo: "yolo", editable: false) else {
             fatalError("Unable to instantiate meal1")
         }
         
-        guard let party2 = Party(address: "125 Rockwood Street", host: "Lucy", time: "8 pm", addinfo: "fun") else {
+        guard let party2 = Party(address: "125 Rockwood Street", host: "Lucy", time: "8 pm", addinfo: "fun", editable: true) else {
             fatalError("Unable to instantiate meal1")
         }
         
-        guard let party3 = Party(address: "101 Canal Street", host: "Worthy", time: "10 pm", addinfo: "partayyy") else {
+        guard let party3 = Party(address: "101 Canal Street", host: "Worthy", time: "10 pm", addinfo: "partayyy", editable: true) else {
             fatalError("Unable to instantiate meal1")
         }
         

@@ -37,6 +37,13 @@ class PartyViewController: UIViewController, UITextFieldDelegate {
             AText.text = party.address
             TimeText.text = party.time
             InfoText.text = party.addinfo
+            
+            // Set editability
+            HText.isUserInteractionEnabled = party.editable
+            AText.isUserInteractionEnabled = party.editable
+            TimeText.isUserInteractionEnabled = party.editable
+            InfoText.isUserInteractionEnabled = party.editable
+            saveButton.isEnabled = party.editable
         }
         // Do any additional setup after loading the view.
     }
@@ -72,7 +79,7 @@ class PartyViewController: UIViewController, UITextFieldDelegate {
         let time = TimeText.text ?? ""
         let addinfo = InfoText.text ?? ""
         
-        party = Party(address: address, host: host, time: time, addinfo: addinfo)
+        party = Party(address: address, host: host, time: time, addinfo: addinfo, editable: true)
     
         
     }

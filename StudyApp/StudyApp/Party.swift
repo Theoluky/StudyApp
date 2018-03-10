@@ -14,10 +14,11 @@ class Party {
     var host: String
     var time: String
     var addinfo: String
+    var editable: Bool // can be updated to Array<String> containing all users who can edit
     
     //Initialization
     
-    init?(address: String, host: String, time: String, addinfo: String){
+    init?(address: String, host: String, time: String, addinfo: String, editable: Bool){
         
         if address.isEmpty || host.isEmpty {
             return nil
@@ -27,6 +28,7 @@ class Party {
         self.host = host
         self.time = time
         self.addinfo = addinfo
+        self.editable = editable
     }
 }
 
